@@ -1,22 +1,25 @@
 pipeline {
     agent any
-    parameters {
-        string(name: 'USER_INPUT', defaultValue: 'default value', description: 'Enter a message')
-    }
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/TheDoc14/jenkConectionProj.git'
+                git 'https://github.com/TheDoc14/jenkConectionProj.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'echo Building the project...'
+                bat 'dir'  // מציג את הקבצים בתיקייה
             }
         }
         stage('Run Script') {
             steps {
-                sh 'chmod +x script.sh && ./script.sh "${params.USER_INPUT}"'
+                bat 'script.bat "Hello from Jenkins!"'
             }
         }
         stage('Archive Output') {
             steps {
-                archiveArtifacts artifacts: 'output_*.html', fingerprint: true
+                bat 'echo Archiving output...'
             }
         }
     }
