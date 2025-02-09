@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run Script') {
             steps {
-                bat 'script.bat "Hello from Jenkins!"'
+                bat 'script.cmd "Hello from Jenkins!"'
             }
         }
         stage('Archive Output') {
