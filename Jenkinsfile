@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'USER_INPUT', defaultValue: '', description: 'Enter your input')
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -14,12 +17,16 @@ pipeline {
         }
         stage('Run Script') {
             steps {
-                bat 'script.cmd "Hello from Jenkins!"'
+                script {
+                    def userInput = params.USER_INPUT
+                    bat "script.cmd \"${userInput}\""
+                }
             }
         }
         stage('Archive Output') {
             steps {
                 bat 'echo Archiving output...'
+                archiveArtifacts artifacts: '**/*.html', allowEmptyArchive: true
             }
         }
     }
