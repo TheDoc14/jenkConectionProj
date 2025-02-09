@@ -2,7 +2,7 @@
 :: בדיקה אם יש קלט
 if "%~1"=="" (
     echo Usage: script.cmd [your_input]
-    exit /b 1
+    %~1="user didnt provide an input."
 )
 
 :: יצירת משתנה לתאריך ושעה בצורה חדשה
