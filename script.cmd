@@ -5,9 +5,10 @@ if "%1"=="" (
     exit /b 1
 )
 
-:: יצירת משתנה לתאריך ושעה
-for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set datetime=%%I
-set timestamp=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2%_%datetime:~8,2%-%datetime:~10,2%-%datetime:~12,2%
+:: יצירת משתנה לתאריך ושעה בצורה חדשה ללא שימוש ב-wmic
+for /f "tokens=1-3 delims=/ " %%a in ('echo %date%') do set current_date=%%c-%%a-%%b
+for /f "tokens=1-2 delims=: " %%a in ('echo %time%') do set current_time=%%a-%%b
+set timestamp=%current_date%_%current_time%
 
 :: יצירת שם קובץ עם תאריך
 set filename=output_%timestamp%.html
