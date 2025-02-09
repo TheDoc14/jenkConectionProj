@@ -19,7 +19,6 @@ echo ^<body^>
 echo ^<h1^>User Input Log^</h1^>
 :: בדיקה אם יש קלט
 if "%~1"=="" (
-    echo Usage: script.cmd [your_input]
     echo ^<p^>User Input: user aint provided input^</p^>
 ) else (
     echo ^<p^>User Input: %~1^</p^>
