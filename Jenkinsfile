@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/username/SimpleJenkinsProject.git'
+                git 'https://github.com/TheDoc14/jenkConectionProj.git'
             }
         }
         stage('Run Script') {
