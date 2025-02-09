@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/TheDoc14/jenkConectionProj.git'
+                git branch: 'main', url: 'https://github.com/TheDoc14/jenkConectionProj.git'
             }
         }
         stage('Build') {
